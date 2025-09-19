@@ -32,6 +32,12 @@ except Exception:
 from .models import ScrapingRun, ScrapingStatus, ScrapedRecord
 
 logger = logging.getLogger(__name__)
+CHROME_BIN = "/usr/bin/chromium"
+CHROMEDRIVER_PATH = "/usr/bin/chromedriver"
+
+chrome_options.binary_location = CHROME_BIN
+service = Service(CHROMEDRIVER_PATH)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Configurable constants
 DEFAULT_WAIT = int(getattr(settings, "SELENIUM_DEFAULT_WAIT", 30))
