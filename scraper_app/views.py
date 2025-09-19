@@ -138,6 +138,11 @@ def _driver_from_config() -> webdriver.Chrome:
     chrome_options.add_argument("--font-render-hinting=none")
     chrome_options.add_argument("--remote-debugging-port=9222")
 
+     # auto install correct driver version
+    chromedriver_autoinstaller.install()
+
+    return webdriver.Chrome(options=chrome_options)
+
     # If a custom Chrome binary was provided (e.g., CHROME_BIN), use it
     chrome_binary = getattr(settings, "CHROME_BINARY", None) or os.getenv("GOOGLE_CHROME_BIN") or os.getenv("CHROME_BIN")
     if chrome_binary:
