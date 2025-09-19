@@ -118,13 +118,9 @@ if DATABASE_URL:
 # ------------------------------------------------------------------------------
 # Static and media files
 # ------------------------------------------------------------------------------
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # If you have additional project static assets (e.g., /assets), add:
@@ -252,3 +248,4 @@ SCRAPER_MAX_CAPTCHA_ATTEMPTS = env_int("SCRAPER_MAX_CAPTCHA_ATTEMPTS", 10)
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
